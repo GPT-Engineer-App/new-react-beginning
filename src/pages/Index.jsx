@@ -15,8 +15,11 @@ const Index = () => {
           <Button as={Link} to="/" variant="ghost" colorScheme="whiteAlpha" mr={4}>
             Home
           </Button>
-          <Button as={Link} to="/about" variant="ghost" colorScheme="whiteAlpha">
+          <Button as={Link} to="/about" variant="ghost" colorScheme="whiteAlpha" mr={4}>
             About
+          </Button>
+          <Button as={Link} to="/tables" variant="ghost" colorScheme="whiteAlpha">
+            Tables
           </Button>
         </Box>
       </Flex>
