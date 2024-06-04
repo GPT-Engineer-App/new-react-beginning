@@ -1,8 +1,10 @@
 import { Container, Text, VStack, Box, Flex, Spacer, Button, useBreakpointValue } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { useSupabaseAuth } from "../integrations/supabase/auth.jsx";
 
 const Index = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
+  const { session, logout } = useSupabaseAuth();
 
   return (
     <Container maxW="container.xl" p={0}>
@@ -18,9 +20,18 @@ const Index = () => {
           <Button as={Link} to="/about" variant="ghost" colorScheme="whiteAlpha" mr={4}>
             About
           </Button>
-          <Button as={Link} to="/tables" variant="ghost" colorScheme="whiteAlpha">
+          <Button as={Link} to="/tables" variant="ghost" colorScheme="whiteAlpha" mr={4}>
             Tables
           </Button>
+          {session ? (
+            <Button variant="ghost" colorScheme="whiteAlpha" onClick={logout}>
+              Logout
+            </Button>
+          ) : (
+            <Button as={Link} to="/login" variant="ghost" colorScheme="whiteAlpha">
+              Login
+            </Button>
+          )}
         </Box>
       </Flex>
       <Flex direction="column" justify="center" align="center" height="calc(100vh - 64px)">
